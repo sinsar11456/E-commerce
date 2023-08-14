@@ -25,4 +25,22 @@ export const sliderItems = [
 },
 
 
+];
+
+export const categories = [
+    {
+        id : 1 ,
+        img : "https://images.unsplash.com/photo-1611042553365-9b101441c135?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW9kZWwlMjBnaXJsfGVufDB8fDB8fHww&auto=format&fit=crop&w=400&q=60",
+        title: "SHIRT STYLE!",
+    },
+    {
+        id : 2 ,
+        img :"https://images.unsplash.com/photo-1621786030484-4c855eed6974?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG1vZGVsJTIwZ2lybHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=400&q=60",
+        title:"LONGWEAR LOVE",
+    },
+    {
+        id : 3,
+        img :"https://images.unsplash.com/photo-1619785292559-a15caa28bde6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fG1vZGVsJTIwZ2lybHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=400&q=60",
+        title: "LIGHT JACKETS",
+    }
 ]
