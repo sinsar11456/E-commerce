@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   transition: all 1.5s ease;
-  transform: translateX(${props=>props.slideIndex * -100}vw);
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 
 const Slide = styled.div`
@@ -78,9 +78,9 @@ const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
     if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex -1 : 2);
-    }else{
-      setSlideIndex(slideIndex < 2 ? slideIndex +1 : 0);
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+    } else {
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
   };
   return (
@@ -89,19 +89,17 @@ const Slider = () => {
         <ArrowLeftOutlined />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
-        {sliderItems.map((item)=>(
-        <Slide bg={item.bg}>
-          <ImageContainer>
-            <Image src={item.img} />
-          </ImageContainer>
-          <InfoContainer>
-            <Title>{item.title}</Title>
-            <Desc>
-              {item.desc}
-            </Desc>
-            <Button>SHOP NOW</Button>
-          </InfoContainer>
-        </Slide>
+        {sliderItems.map((item) => (
+          <Slide bg={item.bg} key={item.id}>
+            <ImageContainer>
+              <Image src={item.img} />
+            </ImageContainer>
+            <InfoContainer>
+              <Title>{item.title}</Title>
+              <Desc>{item.desc}</Desc>
+              <Button>SHOP NOW</Button>
+            </InfoContainer>
+          </Slide>
         ))}
       </Wrapper>
       <Arrow direction="right" onClick={() => handleClick("right")}>
