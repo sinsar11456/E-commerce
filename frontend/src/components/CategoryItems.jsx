@@ -47,3 +47,4 @@ const CategoryItems = ({ item }) => {
 };
 
 export default CategoryItems;
+
