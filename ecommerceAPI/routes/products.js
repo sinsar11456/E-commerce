@@ -37,7 +37,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-// //DELETE
+ //DELETE
 
 router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
@@ -60,53 +60,30 @@ router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
 });
 
  //GET ALL PRODUCT
-// router.get("/",  async (req, res) => {
-//   const qNew = req.query.new;
-//   const qCategory = req.query.category;
-//   try {
-//    let Products;
-//   if(qNew){
-//     products = await Product.find().sort({createAt: -1}).limit(5)
-//   }else if(qCategory){
-//     products = await Product.find({catagories:{
-//       $in:[qCategory],
-//     },
-//   });
-//   }else{
-//     product = Product.find()
-//   }
+router.get("/",  async (req, res) => {
+  const qNew = req.query.new;
+  const qCategory = req.query.category;
+  try {
+   let Products;
+
+  if(qNew){
+    products = await Product.find().sort({createAt: -1}).limit(1)
+  }else if(qCategory){
+    products = await Product.find({catagories:{
+      $in:[qCategory],
+    },
+  });
+  }else{
+    product = Product.find()
+  }
 
 
-// res.status(200).json(user)
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+res.status(200).json(products)
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-// //GET USER STATS
-// router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
-//   const date = new Date();
-//   const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
-//   try {
 
-//     const data = await User.aggregate([
-//       { $match: { createdAt: { $gte: lastYear } } },
-//       {
-//         $project: {
-//           month:   { $month: "$createdAt" },
-//         },
-//       },
-//       {
-//         $group: {
-//           _id: "$month",
-//           total: { $sum: 1 },
-//         },
-//       },
-//     ]);
-//     res.status(200).json(data)
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 module.exports = router;

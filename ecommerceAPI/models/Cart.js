@@ -18,4 +18,5 @@ const CartSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+
 model.exports = mongoose.model("User", UserSchema);
