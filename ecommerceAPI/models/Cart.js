@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const CartSchema = new mongoose.Schema(
   {
-    userId: { type: string, required: true },
+    userId: { type: String, required: true },
     product: [
       {
         productId: {
@@ -19,4 +19,4 @@ const CartSchema = new mongoose.Schema(
 );
 
 
-model.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Cart", CartSchema);
