@@ -1,18 +1,18 @@
-import React from 'react'
+import React from "react";
 
 const App = () => {
   return (
     <Router>
       <Switch>
         <Route path="/pay">
-            <Pay/>
+          <Pay />
         </Route>
         <Route path="/success">
-            <Success/>
+          <Success />
         </Route>
       </Switch>
     </Router>
-  )
-}
+  );
+};
 
-export default App
+export default App;
