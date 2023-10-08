@@ -1,5 +1,9 @@
 import React from "react";
 
+
+//stripe
+
+
 const App = () => {
   return (
     <Router>
