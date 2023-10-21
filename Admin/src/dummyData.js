@@ -48,3 +48,97 @@ export const userData = [
       "Active User":4490,
     }
   ];
+
+ export const userRows = [
+    {
+      id: 1,
+      username: "jon Snow",
+      avatar:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKHIifVfI8xqo_pzs2XnEs5v03VSPVv3UeA&usqp=CAU",
+      email: "jon@email.com",
+      status: "active",
+      transaction: "$120",
+    },
+    {
+      id: 2,
+      username: "jon Snow",
+      avatar:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKHIifVfI8xqo_pzs2XnEs5v03VSPVv3UeA&usqp=CAU",
+      email: "jon@email.com",
+      status: "active",
+      transaction: "$120",
+    },
+    {
+      id: 3,
+      username: "jon Snow",
+      avatar:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKHIifVfI8xqo_pzs2XnEs5v03VSPVv3UeA&usqp=CAU",
+      email: "jon@email.com",
+      status: "active",
+      transaction: "$120",
+    },
+    {
+      id: 4,
+      username: "jon Snow",
+      avatar:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKHIifVfI8xqo_pzs2XnEs5v03VSPVv3UeA&usqp=CAU",
+      email: "jon@email.com",
+      status: "active",
+      transaction: "$120",
+    },
+    {
+      id: 5,
+      username: "jon Snow",
+      avatar:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKHIifVfI8xqo_pzs2XnEs5v03VSPVv3UeA&usqp=CAU",
+      email: "jon@email.com",
+      status: "active",
+      transaction: "$120",
+    },
+    {
+      id: 6,
+      username: "jon Snow",
+      avatar:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKHIifVfI8xqo_pzs2XnEs5v03VSPVv3UeA&usqp=CAU",
+      email: "jon@email.com",
+      status: "active",
+      transaction: "$120",
+    },
+    {
+      id: 7,
+      username: "jon Snow",
+      avatar:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKHIifVfI8xqo_pzs2XnEs5v03VSPVv3UeA&usqp=CAU",
+      email: "jon@email.com",
+      status: "active",
+      transaction: "$120",
+    },
+    {
+      id: 8,
+      username: "jon Snow",
+      avatar:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKHIifVfI8xqo_pzs2XnEs5v03VSPVv3UeA&usqp=CAU",
+      email: "jon@email.com",
+      status: "active",
+      transaction: "$120",
+    },
+    {
+      id: 9,
+      username: "jon Snow",
+      avatar:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKHIifVfI8xqo_pzs2XnEs5v03VSPVv3UeA&usqp=CAU",
+      email: "jon@email.com",
+      status: "active",
+      transaction: "$120",
+    },
+    {
+      id: 10,
+      username: "jon Snow",
+      avatar:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKHIifVfI8xqo_pzs2XnEs5v03VSPVv3UeA&usqp=CAU",
+      email: "jon@email.com",
+      status: "active",
+      transaction: "$120",
+    },
+   
+  ];

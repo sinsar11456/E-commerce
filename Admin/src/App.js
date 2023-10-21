@@ -1,19 +1,18 @@
-import Sidebar from "./components/sidebar/Sidebar";
-import Topbar from "./components/topbar/Topbar";
+import { Route, Routes } from "react-router-dom";
 import "./app.css";
-import Home from "./components/home/Home";
+import { PageRoutes } from "./PageRoutes";
+
 
 function App() {
   return (
-    <div className="App">
-      <Topbar />
-      <div className="container">
-        <Sidebar />
-        <Home />
-        
-      </div>
-    </div>
+    <Routes >
+    <>
+      <Route path="/*" element={<PageRoutes/>} />
+      </>
+    </Routes>
+
   );
 }
-
 export default App;
+
+

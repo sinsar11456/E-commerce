@@ -1,7 +1,7 @@
 import React from "react";
 import "./home.css";
-import Featuredinfo from "../featuredinfo/Featuredinfo";
-import Chart from "../chart/Chart";
+import Featuredinfo from "../../components/featuredinfo/Featuredinfo";
+import Chart from "../../components/chart/Chart";
 import { userData } from "../../dummyData";
 import WidgetsSm from "../../components/widgetsSm/WidgetsSm";
 import WidgetsLg from "../../components/widgetsLg/WidgetsLg";
