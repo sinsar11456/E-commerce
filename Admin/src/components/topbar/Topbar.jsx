@@ -7,7 +7,7 @@ export default function Topbar() {
   return (
     <div className="topbar">
       <div className="topbarWrapper">
-      <Link to="/">
+      <Link to="/" className="link">
         <div className="topLeft">
           <span className="logo">sinsadmin</span>
         </div>

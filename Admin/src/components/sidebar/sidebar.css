@@ -25,19 +25,20 @@
     padding: 5px;
 }
 
-.sidebarListItems {
+.sidebarListItem {
     padding: 5px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    border-radius: 10%;
+    border-radius: 10px;
 }
 
-.sidebarListItems.active , .sidebarListItems:hover {
+.sidebarListItems.active,
+.sidebarListItems:hover {
     background-color: rgb(240, 240, 255);
 }
 
-.sideIcons{
+.sideIcons {
 
     margin-right: 5px;
     font-size: 20px !important;

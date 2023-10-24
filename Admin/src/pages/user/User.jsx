@@ -7,15 +7,16 @@ import {
   LocationSearching,
   Publish,
 } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 export default function User() {
   return (
     <div className="user">
       <div className="userTitleContainer">
         <h1 className="userTitle">Edit User</h1>
-        {/* <Link to="/newUser"> */}
+        <Link to="/newUser">
         <button className="userAddButton">Create</button>
-        {/* </Link> */}
+        </Link>
       </div>
       <div className="userContainer">
         <div className="userShow">
