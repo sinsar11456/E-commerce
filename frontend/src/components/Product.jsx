@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import Search from "@mui/icons-material/Search";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import { Link } from "react-router-dom";
 
 const Info = styled.div`
   opacity: 0;
@@ -70,7 +71,9 @@ const Product = ({ item }) => {
       <Image src={item.img} />
       <Info>
         <Icon>
-          <ShoppingCart />
+          <Link to={`/product/${item._id}`}>
+            <ShoppingCart />
+          </Link>
         </Icon>
         <Icon>
           <Search />
