@@ -4,6 +4,10 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { Add, Remove } from "@mui/icons-material";
+import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { publicRequest } from "../requestMethods";
+import axios from "axios";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -80,35 +84,66 @@ const AddContainer = styled.div`
 `;
 
 const AmountContainer = styled.div`
- display: flex;
- align-items: center;
- font-weight: 700;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
 `;
 
 const Amount = styled.span`
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    border: 1px solid teal;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0px 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid teal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 5px;
 `;
 
 const Button = styled.button`
-padding: 15px;
-border: 2px solid teal;
-background-color: white;
-cursor: pointer;
-font-weight: 500;
+  padding: 15px;
+  border: 2px solid teal;
+  background-color: white;
+  cursor: pointer;
+  font-weight: 500;
 
-&:hover{
+  &:hover {
     background-color: #f8f4f4;
-}
+  }
 `;
 
 const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState({});
+  const [color,setColor] = useState([]);
+  const [size,setSize] = useState ([]);
+
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/products/find/" + id);
+        setProduct(res.data);
+      } catch {}
+    };
+    getProduct();
+  }, [id]);
+
+  const handleQuantity = (type   ) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  cost handleClick = ()=>{
+    //update cart 
+    axios.pos
+  }
+
   return (
     <Container>
       <Navbar />
@@ -116,42 +151,35 @@ const Product = () => {
 
       <Wrapper>
         <ImgContainer>
-          <Image src="https://www.bardot.com/dw/image/v2/BCGZ_PRD/on/demandware.static/-/Sites-bardot-master-catalog/default/dw8dd8a9f9/images/hi-res/bardot/91092PB/91092PB_164010_TF_02.png?sw=1000&sh=1500&sm=fit" />
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Denim Jumpsuit</Title>
-          <Desc>
-            Originally from Latin, Lorem ipsum has no intelligible meaning. It
-            is simply a display of letters to be viewed as a sample with given
-            graphical elements in a file. "Lipsum" (a portmanteau of lorem and
-            ipsum) generators are commonly used to form generic
-          </Desc>
-          <Price>$ 20</Price>
+          <Title>{product.title} </Title>
+          <Desc>{product.desc}</Desc>
+          <Price>$ {product.price}</Price>
           <FilterContainer>
             <Filter>
-              <FilterTitle>color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
+              <FilterTitle>Color</FilterTitle>
+              {product.color?.map((c) => (
+                <FilterColor color={c} key={c} />
+              ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
+              <FilterSize onChange={(e)=>setSize(e.target.value)}>
+                {product.size?.map((s) => (
+                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                ))}
               </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove />
+              <Remove onClick={() => handleQuantity("dec")} />
               <Amount>1</Amount>
-              <Add />
+              <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onclick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
