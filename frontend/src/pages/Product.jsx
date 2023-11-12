@@ -117,7 +117,7 @@ const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
-  const [quantity, setQuantity] = useState({});
+  const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState([]);
   const [size, setSize] = useState([]);
   const dispatch = useDispatch();
@@ -162,16 +162,16 @@ const Product = () => {
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              {product.color?.map((c) => (
-                <FilterColor color={c} key={c} onClick={() => setColor(c)} />
+              {product.color?.map((c,i) => (
+                <FilterColor color={c} key={i} onClick={() => setColor(c)} />
               ))}
               {/* if product contains color array it will map through the colors */}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize onChange={(e) => setSize(e.target.value)}>
-                {product.size?.map((s) => (
-                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                {product.size?.map((s,i) => (
+                  <FilterSizeOption key={i}>{s}</FilterSizeOption>
                 ))}
               </FilterSize>
             </Filter>
