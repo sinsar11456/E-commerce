@@ -7,7 +7,8 @@ import { Add, Remove } from "@mui/icons-material";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { publicRequest } from "../requestMethods";
-import axios from "axios";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -117,21 +118,24 @@ const Product = () => {
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState({});
-  const [color,setColor] = useState([]);
-  const [size,setSize] = useState ([]);
-
+  const [color, setColor] = useState([]);
+  const [size, setSize] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getProduct = async () => {
       try {
         const res = await publicRequest.get("/products/find/" + id);
+        
         setProduct(res.data);
-      } catch {}
+      } catch (err) {
+        console.log(err);
+      }
     };
     getProduct();
-  }, [id]);
+  }, [id]); 
 
-  const handleQuantity = (type   ) => {
+  const handleQuantity = (type) => {
     if (type === "dec") {
       quantity > 1 && setQuantity(quantity - 1);
     } else {
@@ -139,16 +143,14 @@ const Product = () => {
     }
   };
 
-  cost handleClick = ()=>{
-    //update cart 
-    axios.pos
-  }
 
+  const handleClick = () => {
+    dispatch(addProduct({ ...product, quantity, color, size }));
+  };
   return (
     <Container>
-      <Navbar />
       <Announcement />
-
+      <Navbar />
       <Wrapper>
         <ImgContainer>
           <Image src={product.img} />
@@ -161,12 +163,13 @@ const Product = () => {
             <Filter>
               <FilterTitle>Color</FilterTitle>
               {product.color?.map((c) => (
-                <FilterColor color={c} key={c} />
+                <FilterColor color={c} key={c} onClick={() => setColor(c)} />
               ))}
+              {/* if product contains color array it will map through the colors */}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize onChange={(e)=>setSize(e.target.value)}>
+              <FilterSize onChange={(e) => setSize(e.target.value)}>
                 {product.size?.map((s) => (
                   <FilterSizeOption key={s}>{s}</FilterSizeOption>
                 ))}
@@ -176,10 +179,10 @@ const Product = () => {
           <AddContainer>
             <AmountContainer>
               <Remove onClick={() => handleQuantity("dec")} />
-              <Amount>1</Amount>
+              <Amount>{quantity}</Amount>
               <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button onclick={handleClick}>ADD TO CART</Button>
+            <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
