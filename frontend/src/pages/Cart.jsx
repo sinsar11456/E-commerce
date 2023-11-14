@@ -6,8 +6,8 @@ import { Add, Remove } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import StripeCheckout from "react-stripe-checkout";
-import {userRequest} from "../requestMethods";
-
+import { userRequest } from "../requestMethods";
+import { useNavigate } from "react-router";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -147,8 +147,7 @@ const Button = styled.button`
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
-  const history = useHistorY();
-
+  const navigate = useNavigate();
 
   const onToken = (token) => {
     setStripeToken(token);
@@ -159,15 +158,19 @@ const Cart = () => {
       try {
         const res = await userRequest.post("/checkout/payment", {
           tokenId: stripeToken.id,
-          amount: cart.total* 100,
+          // amount: cart.total * 100,
+          amount:500,
         });
-        history.push("/success", {
+        navigate("/success", {
           stripeData: res.data,
-          products: cart, });
-      } catch {}
+          products: cart,
+        });
+      } catch (err) {
+        console.log(err);
+      };
     };
-    stripeToken && makeRequest();
-  }, [stripeToken, cart.total, history]);
+    stripeToken && makeRequest()
+  }, [stripeToken, cart.total, navigate]);
   return (
     <Container>
       <Navbar />
@@ -247,7 +250,7 @@ const Cart = () => {
               description={`Your total is $${cart.total}`}
               amount={cart.total * 100}
               token={onToken}
-              stripeKey={`KEY`}
+              stripeKey={KEY}
             >
               <Button>CHECKOUT NOW</Button>
             </StripeCheckout>

@@ -1,6 +1,8 @@
 const router = require("express").Router();
+const dotenv = require("dotenv");
+dotenv.config();
 const stripe = require("stripe")(process.env.STRIPE_KEY);
-
+//implementing stripe in node
 
 router.post("/payment", (req,res) => {
     stripe.charges.create(
