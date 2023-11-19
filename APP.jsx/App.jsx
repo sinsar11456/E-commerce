@@ -1,22 +1,22 @@
-import React from "react";
+// import React from "react";
 
 
-//stripe
+// //stripe
 
 
-const App = () => {
-  return (
-    <Router>
-      <Switch>
-        <Route path="/pay">
-          <Pay />
-        </Route>
-        <Route path="/success">
-          <Success />
-        </Route>
-      </Switch>
-    </Router>
-  );
-};
+// const App = () => {
+//   return (
+//     <Router>
+//       <Switch>
+//         <Route path="/pay">
+//           <Pay />
+//         </Route>
+//         <Route path="/success">
+//           <Success />
+//         </Route>
+//       </Switch>
+//     </Router>
+//   );
+// };
 
-export default App;
+// export default App;
