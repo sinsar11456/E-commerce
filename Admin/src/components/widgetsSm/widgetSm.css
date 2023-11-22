@@ -1,47 +1,50 @@
-.widgetsSm{
+.widgetSm{
     flex: 1;
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     padding: 20px;
-    margin: 20px;
+    margin-right: 20px;
 }
-.widgetsSmTitle{
+
+.widgetSmTitle{
     font-size: 22px;
     font-weight: 600;
-
 }
 
-.widgetsSmImg{
+.widgetSmImg{
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.widgetsSmList{
-    margin: 0px;
-    padding: 0px;
-     list-style: none;
+.widgetSmList{
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
-.widgetsSmListItems{
+
+.widgetSmListItem{
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 20px 0px;
 }
-.widgetsSmUSer{
+
+.widgetSmUser{
     display: flex;
     flex-direction: column;
 }
-.widgetsSmUsername{
-    font-weight: 600;
 
+.widgetSmUsername{
+    font-weight: 600;
 }
-.widgetsSmUserTitle{
+
+.widgetSmUserTitle{
     font-weight: 300;
 }
-.widgetsSmButton{
 
+.widgetSmButton{
     display: flex;
     align-items: center;
     border: none;
@@ -50,9 +53,9 @@
     background-color: #eeeef7;
     color: #555;
     cursor: pointer;
-
 }
-.widgetsSmIcon{
+
+.widgetSmIcon{
     font-size: 16px !important;
     margin-right: 5px;
 }

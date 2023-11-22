@@ -38,15 +38,15 @@
     border-radius: 10px;
     
 }
-.widgetsLgButton.Approved{
+.widgetsLgButton.approved{
     background-color: #e5faf2;
     color: #3bb077;
 }                
-.widgetsLgButton.Declined{
+.widgetsLgButton.declined{
     background-color: #fff0f1;
     color: #d95087;
 }
-.WidgetsLgButton.Pending{
+.WidgetsLgButton.pending{
     background-color: #ebf1fe;
     color: #2a7ade;
 }

@@ -1,18 +1,19 @@
 import { Route, Routes } from "react-router-dom";
 import "./app.css";
-import { PageRoutes } from "./PageRoutes";
-
+import  PageRoutes  from "../src/PageRoutes";
+import Login from "./pages/login/Login";
 
 function App() {
-  return (
-    <Routes >
-    <>
-      <Route path="/*" element={<PageRoutes/>} />
-      </>
-    </Routes>
+  const admin = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser?.isAdmin
 
+  return (
+    <Routes>
+    {admin &&(
+      <>
+        <Route path="/*" element={<PageRoutes />} />
+      </>)}
+        <Route path="/login" element={<Login />} />
+    </Routes>
   );
 }
 export default App;
-
-
