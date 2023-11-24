@@ -32,18 +32,16 @@ export default function Home() {
     const getStats = async () => {
       try {
         const res = await userRequest.get("/users/stats");
-        res.data &&
-          res.data.map((item) =>
-            setUserStats((prev) => [
-              ...prev,
-              { name: MONTHS[item._id - 1], "Active Users": item.total },
-            ])
-          );
-      } catch (error) {}
+        res.data.map((item) =>
+          setUserStats((prev) => [
+            ...prev,
+            { name: MONTHS[item._id - 1], "Active User": item.total },
+          ])
+        );
+      } catch {}
     };
     getStats();
   }, [MONTHS]);
-
   return (
     <div className="home">
       <Featuredinfo />
