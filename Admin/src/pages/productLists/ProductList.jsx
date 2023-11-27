@@ -1,14 +1,12 @@
 import "./productList.css";
 import { DataGrid } from "@mui/x-data-grid";
-import { productRows } from "../../dummyData";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DeleteOutline } from "@mui/icons-material";
-import { getProducts } from "../../redux/apiCalls";
+import { deleteProduct, getProducts } from "../../redux/apiCalls";
 
 export default function ProductList() {
-  const [data, setData] = useState(productRows);
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
 
@@ -17,7 +15,7 @@ export default function ProductList() {
   }, [dispatch]);
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    deleteProduct(id, dispatch);
   };
 
   const columns = [
@@ -36,7 +34,7 @@ export default function ProductList() {
       },
     },
     { field: "inStock", headerName: "Stock", width: 200 },
-   
+
     {
       field: "price",
       headerName: "Price",
@@ -49,12 +47,12 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/product/" + params.row.id}>
+            <Link to={"/product/" + params.row._id}>
               <button className="productListEdit">Edit</button>
             </Link>
             <DeleteOutline
               className="productListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );
@@ -68,7 +66,7 @@ export default function ProductList() {
         rows={products}
         disableRowSelectionOnClick
         columns={columns}
-        getRowId={(row)=> row._id}
+        getRowId={(row) => row._id}
         initialState={{
           pagination: {
             paginationModel: { page: 0, pageSize: 8 },
