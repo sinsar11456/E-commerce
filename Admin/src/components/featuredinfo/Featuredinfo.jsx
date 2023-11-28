@@ -4,32 +4,34 @@ import "./featuredinfo.css";
 import { userRequest } from "../../requestMethods";
 
 export default function Featuredinfo() {
-  const [income, setIncome] = useState([]);
-  const [perc,setPerc] = useState([]);
+  const [income, setIncome] = useState([])
+  const [perc, setPerc] = useState(0)
 
   useEffect(() => {
     const getIncome = async () => {
       try {
-        const res = await userRequest.get("/orders/income");
-        setIncome(res.data);
+        const res = await userRequest.get("orders/income");
+        setIncome(res.data)
+        console.log(income);
         setPerc((res.data[1].total * 100) / res.data[0].total - 100);
-      } catch {}
+      } catch (error) {}
     };
     getIncome();
   }, []);
-    
+
   return (
     <div className="featured">
       <div className="featuredItems">
         <span className="featuredTitle">Revanue</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">${income[1]?.total}</span>
+          <span className="featuredMoney">${income[0]?.total}</span>
           <span className="featuredMoneyRate">
-            %{Math.floor(perc)}{""}
+            %{Math.floor(perc)}{" "}
             {perc < 0 ? (
-
-            <ArrowDownward className="featuredIcon negative" />
-            ) : <ArrowUpward className="featuredIcon " /> }
+              <ArrowDownward className="featuredIcon negative" />
+            ) : (
+              <ArrowUpward className="featuredIcon" />
+            )}
           </span>
         </div>
         <span className="featuredSub">Compared to last month</span>
@@ -49,10 +51,10 @@ export default function Featuredinfo() {
         <div className="featuredMoneyContainer">
           <span className="featuredMoney">$3,33</span>
           <span className="featuredMoneyRate">
-            +6.3 <ArrowUpward className="featuredIcon " />{" "}
+            +6.3 <ArrowUpward className="featuredIcon " />
           </span>
         </div>
-        <span className="featuredSub">Compared to last month</span>
+        <span className="featuredSub">Compared to last month</span> 
       </div>
     </div>
   );
