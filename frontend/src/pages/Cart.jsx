@@ -164,7 +164,7 @@ const Cart = () => {
         navigate("/success", {
           stripeData: res.data,
           products: cart,
-        });
+      });
       } catch (err) {
         console.log(err);
       }
@@ -187,7 +187,7 @@ const Cart = () => {
             CHECK OUT{" "}
           </TopButton>
         </Top>
-        <Bottom>
+        <Bottom>  
           <Info>
             {cart.products.map((product) => (
               <Product>

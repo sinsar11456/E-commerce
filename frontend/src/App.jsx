@@ -9,7 +9,7 @@ import Success from "./pages/Success";
 import { useSelector } from "react-redux";
 
 function App() {
-  const user = useSelector((state)=>state.user.currentUser);
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <Routes>
@@ -17,16 +17,15 @@ function App() {
       <Route path="/products/:category" element={<ProductList />} />
       <Route path="/product/:id" element={<Product />} />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/success" element={<Success />} />
       <Route
         path="/login"
-        element={user ? (<Navigate replace to="/" />) : <Login />}
+        element={user ? <Navigate replace to="/" /> : <Login />}
       />
       <Route
         path="/register"
         element={user ? <Navigate replace to="/" /> : <Register />}
       />
-      {/* <Route path="/success" element={< />} /> */}
+      <Route path="/success" element={<Success />} />
     </Routes>
   );
 }
