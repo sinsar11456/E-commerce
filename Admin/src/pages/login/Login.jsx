@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleClick = (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     try {
       login(dispatch, { username, password });
       navigate("/")  
