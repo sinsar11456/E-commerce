@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { publicRequest } from "../requestMethods";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
+import { mobile } from "../responsive";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -24,6 +25,7 @@ const Image = styled.img`
   width: 100%;
   height: 90vh;
   object-fit: cover;
+  ${mobile({ height: "40vh" })}
 `;
 
 const InfoContainer = styled.div`
@@ -126,14 +128,14 @@ const Product = () => {
     const getProduct = async () => {
       try {
         const res = await publicRequest.get("/products/find/" + id);
-        
+
         setProduct(res.data);
       } catch (err) {
         console.log(err);
       }
     };
     getProduct();
-  }, [id]); 
+  }, [id]);
 
   const handleQuantity = (type) => {
     if (type === "dec") {
@@ -142,7 +144,6 @@ const Product = () => {
       setQuantity(quantity + 1);
     }
   };
-
 
   const handleClick = () => {
     dispatch(addProduct({ ...product, quantity, color, size }));
@@ -162,7 +163,7 @@ const Product = () => {
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              {product.color?.map((c,i) => (
+              {product.color?.map((c, i) => (
                 <FilterColor color={c} key={i} onClick={() => setColor(c)} />
               ))}
               {/* if product contains color array it will map through the colors */}
@@ -170,7 +171,7 @@ const Product = () => {
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize onChange={(e) => setSize(e.target.value)}>
-                {product.size?.map((s,i) => (
+                {product.size?.map((s, i) => (
                   <FilterSizeOption key={i}>{s}</FilterSizeOption>
                 ))}
               </FilterSize>
