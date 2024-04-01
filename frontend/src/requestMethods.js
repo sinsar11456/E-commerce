@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://e-commerce-z2bq.onrender.com/api/";
+const BASE_URL = "https://e-commerce-z2bq.onrender.com";
                  
 
 // const TOKEN = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken;
