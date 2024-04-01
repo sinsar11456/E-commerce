@@ -86,10 +86,8 @@ const Footer = () => {
       <Left>
         <Logo>SINS.</Logo>
         <Desc>
-          Originally from Latin, Lorem ipsum has no intelligible meaning. It is
-          simply a display of letters to be viewed as a sample with given
-          graphical elements in a file. "Lipsum" (a portmanteau of lorem and
-          ipsum) generators are commonly used to form generic text in a file
+         
+"Discover convenience, explore endless possibilities! Welcome to SINS CART, where every click brings joy to your fingertips. Start shopping smarter today!"
         </Desc>
         <SocialContainer>
           <SocialIcon color="3B5999">
